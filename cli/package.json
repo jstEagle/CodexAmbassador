@@ -1,0 +1,19 @@
+{
+  "name": "@codex-ambassador/cli",
+  "version": "0.1.0",
+  "description": "AI 101, a full-terminal adventure for Codex community events",
+  "type": "module",
+  "private": true,
+  "bin": {
+    "codex-ambassador": "./src/index.js"
+  },
+  "scripts": {
+    "start": "node ./src/index.js",
+    "check": "node --check ./src/index.js && node --check ./src/game.js && node --check ./src/git-sandbox.js && node --check ./src/llm-lab.js && node --check ./src/openai-client.js && node --check ./src/story.js && node --check ./src/ui/render.js && node --check ./src/ui/space.js && node --check ./src/ui/terminal.js",
+    "test": "node --test",
+    "verify": "npm run check && npm test"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

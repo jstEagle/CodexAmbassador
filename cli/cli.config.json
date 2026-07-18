@@ -1,0 +1,102 @@
+{
+  "$schema": "./cli.config.schema.json",
+  "title": "AI 101",
+  "subtitle": "an interactive field guide",
+  "minimumTerminal": {
+    "columns": 76,
+    "rows": 24
+  },
+  "openai": {
+    "endpoint": "https://api.openai.com/v1/responses",
+    "model": "gpt-5.6-sol",
+    "reasoningEffort": "medium",
+    "verbosity": "low",
+    "maxOutputTokens": 700,
+    "timeoutMs": 45000
+  },
+  "space": {
+    "fps": 10,
+    "ambient": 0.09,
+    "lightSpeed": 0.16,
+    "spheres": [
+      {
+        "position": [1.16, 0.36, 0.0],
+        "radius": 0.625,
+        "orbit": [0.06, 0.03, 0.06],
+        "speed": 0.13,
+        "phase": 0.0,
+        "rotation": 0.22,
+        "color": "#737B86",
+        "craters": [
+          { "direction": [-0.3, 0.28, 0.91], "radius": 0.28, "depth": 0.11 },
+          { "direction": [0.26, -0.22, 0.94], "radius": 0.2, "depth": 0.08 },
+          { "direction": [-0.48, -0.32, 0.82], "radius": 0.13, "depth": 0.055 }
+        ]
+      },
+      {
+        "position": [-1.12, 0.42, -0.08],
+        "radius": 0.31,
+        "orbit": [0.08, 0.09, 0.05],
+        "speed": 0.1,
+        "phase": 2.2,
+        "rotation": -0.17,
+        "color": "#687A84",
+        "craters": [
+          { "direction": [0.34, 0.18, 0.92], "radius": 0.27, "depth": 0.1 },
+          { "direction": [-0.28, -0.3, 0.91], "radius": 0.17, "depth": 0.065 }
+        ]
+      },
+      {
+        "position": [1.16, -0.74, 0.08],
+        "radius": 0.115,
+        "orbit": [0.14, 0.07, 0.04],
+        "speed": 0.17,
+        "phase": 4.1,
+        "rotation": 0.3,
+        "color": "#606974",
+        "craters": [
+          { "direction": [-0.18, 0.12, 0.98], "radius": 0.3, "depth": 0.1 }
+        ]
+      }
+    ]
+  },
+  "modes": {
+    "git": {
+      "theme": {
+        "background": "#FFFDF8",
+        "panel": "#FFFFFF",
+        "panelRaised": "#F3E6D8",
+        "text": "#211C18",
+        "muted": "#85776D",
+        "accent": "#F26B38",
+        "secondary": "#F3AA2C",
+        "danger": "#C63C2F",
+        "success": "#377D72"
+      }
+    },
+    "llm": {
+      "theme": {
+        "background": "#F3EDE0",
+        "panel": "#F8F3E9",
+        "panelRaised": "#E7DECF",
+        "text": "#211F1B",
+        "muted": "#777168",
+        "accent": "#211F1B",
+        "secondary": "#4D4942",
+        "danger": "#5E5951",
+        "success": "#211F1B"
+      }
+    }
+  },
+  "theme": {
+    "background": "#0A0A0B",
+    "panel": "#121316",
+    "panelRaised": "#20222D",
+    "text": "#E7E9EF",
+    "muted": "#5E626C",
+    "accent": "#78DCE8",
+    "secondary": "#F4B860",
+    "danger": "#FF6B82",
+    "success": "#B4F06A"
+  }
+}

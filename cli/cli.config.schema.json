@@ -1,0 +1,143 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Codex Ambassador CLI configuration",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["title", "subtitle", "minimumTerminal", "openai", "space", "modes", "theme"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "title": { "type": "string", "minLength": 1 },
+    "subtitle": { "type": "string", "minLength": 1 },
+    "minimumTerminal": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["columns", "rows"],
+      "properties": {
+        "columns": { "type": "integer", "minimum": 60 },
+        "rows": { "type": "integer", "minimum": 18 }
+      }
+    },
+    "openai": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["endpoint", "model", "reasoningEffort", "verbosity", "maxOutputTokens", "timeoutMs"],
+      "properties": {
+        "endpoint": { "type": "string", "format": "uri" },
+        "model": { "type": "string", "minLength": 1 },
+        "reasoningEffort": { "enum": ["none", "low", "medium", "high", "xhigh", "max"] },
+        "verbosity": { "enum": ["low", "medium", "high"] },
+        "maxOutputTokens": { "type": "integer", "minimum": 1 },
+        "timeoutMs": { "type": "integer", "minimum": 1000 }
+      }
+    },
+    "space": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["fps", "ambient", "lightSpeed", "spheres"],
+      "properties": {
+        "fps": { "type": "number", "minimum": 1, "maximum": 30 },
+        "ambient": { "type": "number", "minimum": 0, "maximum": 1 },
+        "lightSpeed": { "type": "number", "minimum": 0 },
+        "spheres": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["position", "radius", "orbit", "speed", "phase", "rotation", "color", "craters"],
+            "properties": {
+              "position": { "$ref": "#/$defs/vector3" },
+              "radius": { "type": "number", "exclusiveMinimum": 0 },
+              "orbit": { "$ref": "#/$defs/vector3" },
+              "speed": { "type": "number" },
+              "phase": { "type": "number" },
+              "rotation": { "type": "number" },
+              "color": { "$ref": "#/$defs/color" },
+              "craters": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": ["direction", "radius", "depth"],
+                  "properties": {
+                    "direction": { "$ref": "#/$defs/vector3" },
+                    "radius": { "type": "number", "exclusiveMinimum": 0, "maximum": 1 },
+                    "depth": { "type": "number", "exclusiveMinimum": 0, "maximum": 0.25 }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "modes": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["git", "llm"],
+      "properties": {
+        "git": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["theme"],
+          "properties": { "theme": { "$ref": "#/$defs/theme" } }
+        },
+        "llm": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["theme"],
+          "properties": { "theme": { "$ref": "#/$defs/theme" } }
+        }
+      }
+    },
+    "theme": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["background", "panel", "panelRaised", "text", "muted", "accent", "secondary", "danger", "success"],
+      "properties": {
+        "background": { "$ref": "#/$defs/color" },
+        "panel": { "$ref": "#/$defs/color" },
+        "panelRaised": { "$ref": "#/$defs/color" },
+        "text": { "$ref": "#/$defs/color" },
+        "muted": { "$ref": "#/$defs/color" },
+        "accent": { "$ref": "#/$defs/color" },
+        "secondary": { "$ref": "#/$defs/color" },
+        "danger": { "$ref": "#/$defs/color" },
+        "success": { "$ref": "#/$defs/color" }
+      }
+    }
+  },
+  "$defs": {
+    "theme": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["background", "panel", "panelRaised", "text", "muted", "accent", "secondary", "danger", "success"],
+      "properties": {
+        "background": { "$ref": "#/$defs/color" },
+        "panel": { "$ref": "#/$defs/color" },
+        "panelRaised": { "$ref": "#/$defs/color" },
+        "text": { "$ref": "#/$defs/color" },
+        "muted": { "$ref": "#/$defs/color" },
+        "accent": { "$ref": "#/$defs/color" },
+        "secondary": { "$ref": "#/$defs/color" },
+        "danger": { "$ref": "#/$defs/color" },
+        "success": { "$ref": "#/$defs/color" }
+      }
+    },
+    "vector3": {
+      "type": "array",
+      "prefixItems": [
+        { "type": "number" },
+        { "type": "number" },
+        { "type": "number" }
+      ],
+      "items": false,
+      "minItems": 3,
+      "maxItems": 3
+    },
+    "color": {
+      "type": "string",
+      "pattern": "^#[0-9A-Fa-f]{6}$"
+    }
+  }
+}
