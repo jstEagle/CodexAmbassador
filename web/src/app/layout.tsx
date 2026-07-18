@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Codex Ambassador",
-  description: "The web home for Codex Ambassador.",
+  description: "Copy one prompt to install and run the Codex Ambassador CLI.",
 };
 
 export default function RootLayout({
