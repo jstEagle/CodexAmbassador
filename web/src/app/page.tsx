@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import SpaceBackground from "@/components/SpaceBackground";
 
 const REPO_URL = "https://github.com/jstEagle/CodexAmbassador.git";
 
@@ -42,42 +43,23 @@ export default function Home() {
   }
 
   return (
-    <main className="flex min-h-screen items-center justify-center bg-background px-6 py-16 text-foreground">
-      <section className="w-full max-w-2xl rounded-3xl border border-black/10 bg-white p-8 shadow-sm sm:p-12 dark:border-white/10 dark:bg-zinc-950">
-        <p className="font-mono text-xs font-medium tracking-[0.18em] text-zinc-500 uppercase dark:text-zinc-400">
-          Codex Ambassador
-        </p>
-        <h1 className="mt-6 max-w-xl text-4xl font-semibold tracking-tight text-balance sm:text-5xl">
-          Get started with one prompt.
-        </h1>
-        <p className="mt-5 max-w-lg text-base leading-7 text-zinc-600 sm:text-lg dark:text-zinc-400">
-          Copy the prompt below and paste it into Codex. It will clone the
-          repository and set up the CLI for you.
-        </p>
+    <main className="relative flex min-h-screen items-center justify-center px-6 py-16 text-foreground">
+      <SpaceBackground />
 
-        <div className="mt-10">
-          <div className="relative">
-            <pre className="max-h-72 overflow-auto rounded-2xl border border-black/10 bg-zinc-50 p-5 pr-16 font-mono text-xs leading-6 whitespace-pre-wrap break-words text-zinc-700 dark:border-white/10 dark:bg-zinc-900 dark:text-zinc-300">
-              {PROMPT}
-            </pre>
-            <button
-              type="button"
-              onClick={handleCopy}
-              className="absolute top-3 right-3 rounded-full bg-zinc-900 px-3 py-1.5 font-mono text-xs font-medium text-white transition-colors hover:bg-zinc-700 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200"
-            >
-              {copied ? "Copied" : "Copy"}
-            </button>
-          </div>
+      <div className="relative w-full max-w-2xl">
+        <div className="flex items-center justify-end pb-3">
+          <button
+            type="button"
+            onClick={handleCopy}
+            className="text-[11px] font-medium tracking-[0.1em] text-accent uppercase transition-colors [text-shadow:0_1px_8px_#000] hover:text-secondary"
+          >
+            {copied ? "[ copied ]" : "[ copy ]"}
+          </button>
         </div>
-
-        <div className="mt-10 flex items-center gap-3 border-t border-black/10 pt-6 font-mono text-xs text-zinc-500 dark:border-white/10 dark:text-zinc-400">
-          <span
-            className="size-2 rounded-full bg-emerald-500"
-            aria-hidden="true"
-          />
-          {REPO_URL.replace("https://github.com/", "").replace(".git", "")}
-        </div>
-      </section>
+        <pre className="max-h-[70vh] overflow-auto px-1 py-2 font-mono text-xs leading-6 whitespace-pre-wrap break-words text-foreground/90 [text-shadow:0_1px_10px_#000,0_1px_2px_#000]">
+          {PROMPT}
+        </pre>
+      </div>
     </main>
   );
 }
